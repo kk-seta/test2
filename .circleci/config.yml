@@ -35,3 +35,5 @@ jobs:
 
     # run tests!
     - run: vendor/bin/phpunit
+    - run: vendor/bin/phpcs
+    - run: vendor/bin/phpmd app,tests text phpmd.xml --suffixes php
