@@ -1,0 +1,9 @@
+{
+  "name": "API-Newman-Tests",
+  "version": "1.0.0",
+  "description": "NPM package install Postman/Newman so we can run tests from the CI server",
+  "author": "Ettienne Gous",
+  "dependencies": {
+    "newman": "^3.10.0"
+  }
+}

@@ -1,0 +1,32 @@
+pre-commit:
+  enabled: true
+  execute:
+    php-cs-fixer:
+        enabled:  true
+        levels:
+            psr0:       true
+            psr1:       true
+            psr2:       true
+            symfony:    true
+        options: "--fixers=short_array_syntax --diff"
+    phpunit:
+        enabled:     true
+        random-mode: true
+        options:     ''
+        strict-coverage:
+             enabled:       true
+             minimum:       90
+        guard-coverage:
+             enabled: true
+             message: 'WARNING!!, your code coverage is lower.'
+    phplint:         false
+    phpcs:
+        enabled:     true
+        standard:    PSR2
+    phpmd:
+        enabled:     true
+        options:     'app,tests text phpmd.xml --suffixes php'
+    composer:        true
+  message:
+    right-message: 'HEY, GOOD JOB!!'
+    error-message: 'FIX YOUR CODE!!'

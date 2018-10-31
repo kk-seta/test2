@@ -1,0 +1,20 @@
+#!/bin/sh
+
+echo "\r\n=================開始檢查 Code Style !!=================\r\n"
+vendor/bin/phpcs -p 2>/dev/null
+if [ $? -ne 0 ]; then
+  echo "> Code Style 沒過 ! 請修正後commit"
+  exit 1
+fi
+echo "\r\n=================開始執行 Unit Test !!=================\r\n"
+vendor/bin/phpunit 3>/dev/null
+if [ $? -ne 0 ]; then
+  echo "> Unit tests 沒過 ! 請修正後commit"
+  exit 1
+fi
+echo "\r\n=================開始執行 PHPMD !!=================\r\n"
+vendor/bin/phpmd app,tests text phpmd.xml --suffixes php 4>/dev/null
+if [ $? -ne 0 ]; then
+  echo "> PHPMD 沒過 ! 請修正後commit"
+  exit 1
+fi
